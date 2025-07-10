@@ -1,5 +1,6 @@
 package com.deb.tests;
 
+import com.deb.annotations.FrameworkAnnotation;
 import com.deb.pages.HomePage;
 import com.deb.pages.LoginPage;
 import org.testng.Assert;
@@ -7,6 +8,7 @@ import org.testng.annotations.Test;
 
 public class HomePageTest extends BaseTest {
 
+    @FrameworkAnnotation(author = "Debasmita", category = "Regression")
     @Test(description = "To verify user is able to access Admin page")
     public void verifyHomePage() {
         LoginPage loginPage = new LoginPage();
@@ -18,6 +20,7 @@ public class HomePageTest extends BaseTest {
         Assert.assertEquals(landingTitle, "Admin");
     }
 
+    @FrameworkAnnotation(author = "Basu", category = "Regression")
     @Test(description = "To verify footer is present")
     public void verifyFooterText() {
         LoginPage loginPage = new LoginPage();

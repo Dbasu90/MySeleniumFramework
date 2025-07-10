@@ -1,5 +1,6 @@
 package com.deb.listeners;
 
+import com.deb.annotations.FrameworkAnnotation;
 import com.deb.reports.ExtentLogger;
 import com.deb.reports.ExtentReport;
 import org.testng.ITestContext;
@@ -11,6 +12,8 @@ import java.util.Arrays;
 public class TestListener implements ITestListener {
     public void onTestStart(ITestResult result) {
         ExtentReport.createTest(result.getMethod().getDescription());
+        ExtentReport.assignAuthor(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotation.class).author());
+        ExtentReport.assignCategory(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotation.class).category());
     }
 
     public void onTestSuccess(ITestResult result) {

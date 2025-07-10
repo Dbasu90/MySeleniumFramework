@@ -10,8 +10,6 @@ public final class ScreenshotUtil {
     private ScreenshotUtil() {
     }
 
-    ;
-
     public static String captureScreenshot() {
         return ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BASE64);
     }

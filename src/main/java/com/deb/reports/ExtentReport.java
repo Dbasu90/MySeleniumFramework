@@ -24,4 +24,12 @@ public class ExtentReport {
         ExtentManager.setThreadTest(test);
     }
 
+    public static void assignAuthor(String[] author) {
+        ExtentManager.getThreadTest().assignAuthor(author);
+    }
+
+    public static void assignCategory(String[] category) {
+        ExtentManager.getThreadTest().assignCategory(category);
+    }
+
 }
