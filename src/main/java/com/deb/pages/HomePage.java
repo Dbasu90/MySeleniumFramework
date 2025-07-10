@@ -8,32 +8,33 @@ import org.openqa.selenium.By;
 public class HomePage {
 
     private static final By DIV_DASHBOARD = By.xpath("(//div[@class='oxd-topbar-header-title']//h6)[1]");
-    private static final By LOGIN_USER = By.xpath("//span[@class='oxd-userdropdown-tab']/p");
-    private SideBarMenuComponent sideBarMenuComponent;
-    private FooterMenuComponent footerMenuComponent;
 
-    public HomePage(){
+    private static final By LOGIN_USER = By.xpath("//span[@class='oxd-userdropdown-tab']/p");
+
+    private final SideBarMenuComponent sideBarMenuComponent;
+
+    private final FooterMenuComponent footerMenuComponent;
+
+    public HomePage() {
         sideBarMenuComponent = new SideBarMenuComponent();
         footerMenuComponent = new FooterMenuComponent();
     }
 
-    public String getLoginUser(){
+    public String getLoginUser() {
         return SeleniumUtil.getText(LOGIN_USER);
     }
 
-    public String getLandingTitle(){
-        String headerTitle = SeleniumUtil.getText(DIV_DASHBOARD);
-        return headerTitle;
+    public String getLandingTitle() {
+        return SeleniumUtil.getText(DIV_DASHBOARD);
     }
 
-    public  String getFooterText(){
+    public String getFooterText() {
         return footerMenuComponent.getFooterLabel();
     }
 
-    public void clickOnAdmin(){
+    public void clickOnAdmin() {
         sideBarMenuComponent.clickMenuLabel("Admin");
     }
-
 
 
 }

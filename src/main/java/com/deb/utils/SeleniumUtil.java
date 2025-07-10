@@ -2,6 +2,8 @@ package com.deb.utils;
 
 import com.deb.config.ConfigFactory;
 import com.deb.driver.DriverManager;
+import com.deb.enums.WaitType;
+import com.deb.reports.ExtentLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,34 +14,38 @@ import java.time.Duration;
 
 public class SeleniumUtil {
 
-    public static void enterText(By by, String text){
+    public static void enterText(By by, String text, String elementName) {
         WebElement element = waitUntilElementPresent(by);
         element.sendKeys(text);
+        ExtentLogger.pass(text + " is successfully entered in " + elementName);
     }
 
-    public static void click(WebElement element){
+    public static void click(WebElement element) {
         element.click();
+        ExtentLogger.pass("Element is successfully clicked");
     }
 
-    public static void click(By by){
+    public static void click(By by, String elementName) {
         WebElement element = waitUntilElementPresent(by);
-        click(element);
+        element.click();
+        ExtentLogger.pass(elementName + " is successfully clicked");
     }
 
-    public static void click(By by, String waitType){
-        WebElement element=null;
-        if(waitType.equalsIgnoreCase("Presence")){
+    public static void click(By by, WaitType waitType) {
+        WebElement element = null;
+        if (waitType == WaitType.PRESENT) {
             element = waitUntilElementPresent(by);
-        } else if (waitType.equalsIgnoreCase("Clickable")) {
+        } else if (waitType == WaitType.CLICKABLE) {
             element = waitUntilElementClickable(by);
-        } else if (waitType.equalsIgnoreCase("Visible")) {
+        } else if (waitType == WaitType.VISIBLE) {
             element = waitUntilElementVisible(by);
         }
         click(element);
     }
 
-    public static String getText(By by){
+    public static String getText(By by) {
         WebElement element = waitUntilElementPresent(by);
+        ExtentLogger.pass("Value has been successfully retrieved");
         return element.getText();
     }
 
