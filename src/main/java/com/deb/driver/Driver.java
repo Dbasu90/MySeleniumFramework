@@ -7,12 +7,14 @@ import java.time.Duration;
 
 public final class Driver {
 
-    private Driver(){}
+    private Driver() {
+    }
 
-    public static void initDriver(){
+    public static void initDriver() {
         String browser = ConfigFactory.getConfig().browser();
-        if(DriverManager.getDriver() == null) {
-            WebDriver driver = DriverFactory.getDriver(browser);
+        String runMode = ConfigFactory.getConfig().runMode();
+        if (DriverManager.getDriver() == null) {
+            WebDriver driver = DriverFactory.getDriver(browser, runMode);
             DriverManager.setDriver(driver);
             DriverManager.getDriver().manage().window().maximize();
             DriverManager.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(ConfigFactory.getConfig().timeout()));
@@ -20,8 +22,8 @@ public final class Driver {
         }
     }
 
-    public static void quitDriver(){
-        if(DriverManager.getDriver() != null) {
+    public static void quitDriver() {
+        if (DriverManager.getDriver() != null) {
             DriverManager.getDriver().quit();
             DriverManager.setDriver(null);
         }

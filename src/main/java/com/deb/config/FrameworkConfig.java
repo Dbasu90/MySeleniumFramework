@@ -11,4 +11,8 @@ public interface FrameworkConfig extends Config {
     String browser();
 
     boolean screenshotForPassedSteps();
+
+    String runMode();
+
+    String remoteUrl();
 }
