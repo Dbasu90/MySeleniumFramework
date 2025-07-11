@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <listeners>
+        <listener class-name="com.deb.listeners.TestListener"/>
+    </listeners>
+    <test parallel="methods" thread-count="1" name="D:/Practice Frameworks/MySeleniumFramework">
+        <classes>
+            <class name="com.deb.tests.LoginTest">
+                <methods>
+                    <include name="login"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
