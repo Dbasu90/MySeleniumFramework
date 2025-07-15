@@ -1,19 +1,23 @@
 package com.deb.driver;
 
 import com.deb.config.ConfigFactory;
+import com.deb.utils.PropertyReaderUtil;
 import org.openqa.selenium.WebDriver;
 
 import java.time.Duration;
+import java.util.Objects;
 
 public final class Driver {
 
     private Driver() {
     }
 
+    //implemented traditional Property reading using Properties class as well as using Owner library to avoid data conversion from String
+
     public static void initDriver() {
         String browser = ConfigFactory.getConfig().browser();
-        String runMode = ConfigFactory.getConfig().runMode();
-        if (DriverManager.getDriver() == null) {
+        String runMode = PropertyReaderUtil.getValue("runMode");
+        if (Objects.isNull(DriverManager.getDriver())) {
             WebDriver driver = DriverFactory.getDriver(browser, runMode);
             DriverManager.setDriver(driver);
             DriverManager.getDriver().manage().window().maximize();
@@ -23,9 +27,9 @@ public final class Driver {
     }
 
     public static void quitDriver() {
-        if (DriverManager.getDriver() != null) {
+        if (Objects.nonNull(DriverManager.getDriver())) {
             DriverManager.getDriver().quit();
-            DriverManager.setDriver(null);
+            DriverManager.unload();
         }
     }
 }

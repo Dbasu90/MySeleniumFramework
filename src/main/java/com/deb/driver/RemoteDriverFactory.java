@@ -1,6 +1,6 @@
 package com.deb.driver;
 
-import com.deb.config.ConfigFactory;
+import com.deb.utils.PropertyReaderUtil;
 import lombok.SneakyThrows;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -22,7 +22,7 @@ public final class RemoteDriverFactory {
         } else if (browserName.equalsIgnoreCase("edge")) {
             capabilities.setBrowserName("edge");
         }
-        driver = new RemoteWebDriver(new URL(ConfigFactory.getConfig().remoteUrl()), capabilities);
+        driver = new RemoteWebDriver(new URL(PropertyReaderUtil.getValue("remoteUrl")), capabilities);
         return driver;
     }
 }
