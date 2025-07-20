@@ -2,7 +2,7 @@ package com.deb.utils;
 
 import com.deb.config.ConfigFactory;
 import com.deb.driver.DriverManager;
-import com.deb.enums.WaitType;
+import com.deb.enums.WaitStrategy;
 import com.deb.reports.ExtentLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +12,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class SeleniumUtil {
+public final class SeleniumUtil {
+
+    private SeleniumUtil() {
+    }
 
     public static void enterText(By by, String text, String elementName) {
         WebElement element = waitUntilElementPresent(by);
@@ -31,13 +34,13 @@ public class SeleniumUtil {
         ExtentLogger.pass(elementName + " is successfully clicked");
     }
 
-    public static void click(By by, WaitType waitType) {
+    public static void click(By by, WaitStrategy waitType) {
         WebElement element = null;
-        if (waitType == WaitType.PRESENT) {
+        if (waitType == WaitStrategy.PRESENT) {
             element = waitUntilElementPresent(by);
-        } else if (waitType == WaitType.CLICKABLE) {
+        } else if (waitType == WaitStrategy.CLICKABLE) {
             element = waitUntilElementClickable(by);
-        } else if (waitType == WaitType.VISIBLE) {
+        } else if (waitType == WaitStrategy.VISIBLE) {
             element = waitUntilElementVisible(by);
         }
         click(element);
@@ -65,5 +68,9 @@ public class SeleniumUtil {
         WebDriver driver = DriverManager.getDriver();
         return new WebDriverWait(driver, Duration.ofSeconds(ConfigFactory.getConfig().timeout()))
                 .until(ExpectedConditions.presenceOfElementLocated(by));
+    }
+
+    public static String getPageTitle() {
+        return DriverManager.getDriver().getTitle();
     }
 }

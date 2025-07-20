@@ -1,6 +1,6 @@
 package com.deb.enums;
 
-public enum WaitType {
+public enum WaitStrategy {
     PRESENT,
     VISIBLE,
     CLICKABLE;

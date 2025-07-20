@@ -26,7 +26,7 @@ public final class DataProviderUtil {
 
         List<Map<String, String>> executionData = new ArrayList<>(testData);
         Predicate<Map<String, String>> isTestNameNotMatching = map -> !map.get("testcasename").equalsIgnoreCase(testName);
-        Predicate<Map<String, String>> isExecuteColumnNo = map -> map.get("execute").equalsIgnoreCase("No");
+        Predicate<Map<String, String>> isExecuteColumnNo = map -> map.get("execute").equalsIgnoreCase("no");
 
         executionData.removeIf(isTestNameNotMatching.or(isExecuteColumnNo));
         return executionData.toArray();

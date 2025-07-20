@@ -1,6 +1,6 @@
 package com.deb.pages;
 
-import com.deb.enums.WaitType;
+import com.deb.enums.WaitStrategy;
 import com.deb.utils.SeleniumUtil;
 import org.openqa.selenium.By;
 
@@ -25,7 +25,7 @@ public class LoginPage {
     }
 
     public HomePage clickLogin() {
-        SeleniumUtil.click(BTN_LOGIN, WaitType.CLICKABLE);
+        SeleniumUtil.click(BTN_LOGIN, WaitStrategy.CLICKABLE);
         return new HomePage();
     }
 
@@ -37,5 +37,9 @@ public class LoginPage {
 
     public String getErrorMsg() {
         return SeleniumUtil.getText(ERROR_MSG);
+    }
+
+    public String getTitle() {
+        return SeleniumUtil.getPageTitle();
     }
 }

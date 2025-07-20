@@ -16,14 +16,14 @@ public final class PropertyReaderUtil {
 
     private static final Properties property = new Properties();
 
-    private static final Map<String, String> PROPERTY_MAP = new HashMap<>();
+    private static final Map<String, String> CONFIGMAP = new HashMap<>();
 
     static {
         try {
             FileInputStream file = new FileInputStream(FrameworkConstants.getPropertiesPath());
             property.load(file);
             for (Map.Entry<Object, Object> entry : property.entrySet()) {
-                PROPERTY_MAP.put(String.valueOf(entry.getKey()), String.valueOf(entry.getValue()));
+                CONFIGMAP.put(String.valueOf(entry.getKey()), String.valueOf(entry.getValue()));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -35,10 +35,10 @@ public final class PropertyReaderUtil {
     }
 
     public static String getValue(String key) {
-        if (Objects.isNull(key) || Objects.isNull(PROPERTY_MAP.get(key))) {
+        if (Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key))) {
             throw new RuntimeException("Property name " + key + " is not found. Please check config.properties");
         }
-        return PROPERTY_MAP.get(key);
+        return CONFIGMAP.get(key);
     }
 
 
