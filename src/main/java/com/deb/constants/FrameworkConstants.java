@@ -5,6 +5,8 @@ public final class FrameworkConstants {
     private FrameworkConstants() {
     }
 
+    private static final long TIMEOUT = 10;
+
     private static final String RESOURCE_PATH = System.getProperty("user.dir") + "/src/test/resources";
 
     private static final String REPORT_PATH = System.getProperty("user.dir") + "/target/reports/report.html";
@@ -14,6 +16,12 @@ public final class FrameworkConstants {
     private static final String DATASHEET_NAME = "runData";
 
     private static final String PROPERTIES_PATH = RESOURCE_PATH + "/config/config.properties";
+
+    private static final String CONFIG_JSON_PATH = RESOURCE_PATH + "/config/config.json";
+
+    public static long getTimeout() {
+        return TIMEOUT;
+    }
 
     public static String getReportPath() {
         return REPORT_PATH;
@@ -29,5 +37,9 @@ public final class FrameworkConstants {
 
     public static String getPropertiesPath() {
         return PROPERTIES_PATH;
+    }
+
+    public static String getConfigJsonPath() {
+        return CONFIG_JSON_PATH;
     }
 }

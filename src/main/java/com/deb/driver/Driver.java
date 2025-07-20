@@ -1,6 +1,9 @@
 package com.deb.driver;
 
-import com.deb.config.ConfigFactory;
+import com.deb.constants.FrameworkConstants;
+import com.deb.enums.ConfigProperties;
+import com.deb.factories.ConfigFactory;
+import com.deb.factories.DriverFactory;
 import com.deb.utils.PropertyReaderUtil;
 import org.openqa.selenium.WebDriver;
 
@@ -16,12 +19,12 @@ public final class Driver {
 
     public static void initDriver() {
         String browser = ConfigFactory.getConfig().browser();
-        String runMode = PropertyReaderUtil.getValue("runMode");
+        String runMode = PropertyReaderUtil.getValue(ConfigProperties.RUNMODE);
         if (Objects.isNull(DriverManager.getDriver())) {
             WebDriver driver = DriverFactory.getDriver(browser, runMode);
             DriverManager.setDriver(driver);
             DriverManager.getDriver().manage().window().maximize();
-            DriverManager.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(ConfigFactory.getConfig().timeout()));
+            DriverManager.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(FrameworkConstants.getTimeout()));
             DriverManager.getDriver().get(ConfigFactory.getConfig().url());
         }
     }

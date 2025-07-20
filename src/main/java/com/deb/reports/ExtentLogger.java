@@ -1,7 +1,7 @@
 package com.deb.reports;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
-import com.deb.config.ConfigFactory;
+import com.deb.factories.ConfigFactory;
 import com.deb.utils.ScreenshotUtil;
 
 public final class ExtentLogger {
@@ -10,7 +10,7 @@ public final class ExtentLogger {
     }
 
     public static void pass(String message) {
-        if (ConfigFactory.getConfig().screenshotForPassedSteps()) {
+        if (ConfigFactory.getConfig().passedstepsscreenshots().equalsIgnoreCase("yes")) {
             ExtentManager.getThreadTest().pass(message,
                     MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtil.captureScreenshot()).build());
         } else {

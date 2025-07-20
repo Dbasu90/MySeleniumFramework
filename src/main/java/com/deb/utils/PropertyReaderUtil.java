@@ -1,6 +1,7 @@
 package com.deb.utils;
 
 import com.deb.constants.FrameworkConstants;
+import com.deb.enums.ConfigProperties;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -34,11 +35,11 @@ public final class PropertyReaderUtil {
     private PropertyReaderUtil() {
     }
 
-    public static String getValue(String key) {
-        if (Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key))) {
+    public static String getValue(ConfigProperties key) {
+        if (Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key.name().toLowerCase()))) {
             throw new RuntimeException("Property name " + key + " is not found. Please check config.properties");
         }
-        return CONFIGMAP.get(key);
+        return CONFIGMAP.get(key.name().toLowerCase());
     }
 
 

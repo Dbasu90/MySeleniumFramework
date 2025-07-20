@@ -15,17 +15,17 @@ public class LoginPage {
     private static final By ERROR_MSG = By.xpath("//div[@role='alert']//p");
 
     public LoginPage setUserName(String userName) {
-        SeleniumUtil.enterText(TXTBOX_USERNAME, userName, "Username");
+        SeleniumUtil.enterText(TXTBOX_USERNAME, userName, WaitStrategy.PRESENT, "Username");
         return this;
     }
 
     public LoginPage setPassword(String password) {
-        SeleniumUtil.enterText(TXTBOX_PASSWORD, password, "Password");
+        SeleniumUtil.enterText(TXTBOX_PASSWORD, password, WaitStrategy.PRESENT, "Password");
         return this;
     }
 
     public HomePage clickLogin() {
-        SeleniumUtil.click(BTN_LOGIN, WaitStrategy.CLICKABLE);
+        SeleniumUtil.click(BTN_LOGIN, WaitStrategy.CLICKABLE, "Login Button");
         return new HomePage();
     }
 
@@ -36,7 +36,7 @@ public class LoginPage {
     }
 
     public String getErrorMsg() {
-        return SeleniumUtil.getText(ERROR_MSG);
+        return SeleniumUtil.getText(ERROR_MSG, WaitStrategy.VISIBLE);
     }
 
     public String getTitle() {
