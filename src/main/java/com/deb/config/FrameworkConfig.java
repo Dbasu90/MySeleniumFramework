@@ -9,9 +9,13 @@ public interface FrameworkConfig extends Config {
 
     String browser();
 
-    String passedstepsscreenshots();
+    String passedStepsScreenshots();
 
     String runMode();
 
     String remoteUrl();
+
+    String failedStepsScreenshots();
+
+    String overrideReports();
 }

@@ -36,10 +36,10 @@ public final class PropertyReaderUtil {
     }
 
     public static String getValue(ConfigProperties key) {
-        if (Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key.name().toLowerCase()))) {
+        if (Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key.getLabel()))) {
             throw new RuntimeException("Property name " + key + " is not found. Please check config.properties");
         }
-        return CONFIGMAP.get(key.name().toLowerCase());
+        return CONFIGMAP.get(key.getLabel());
     }
 
 

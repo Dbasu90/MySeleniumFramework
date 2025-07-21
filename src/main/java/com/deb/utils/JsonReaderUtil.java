@@ -28,10 +28,10 @@ public final class JsonReaderUtil {
         }
     }
 
-    public static String get(ConfigProperties key) {
-        if (Objects.isNull(key) || Objects.isNull(configMap.get(key.name().toLowerCase()))) {
+    public static String getValue(ConfigProperties key) {
+        if (Objects.isNull(key) || Objects.isNull(configMap.get(key.getLabel()))) {
             throw new RuntimeException("Property name " + key + " is not found. Please check config.json");
         }
-        return configMap.get(key.name().toLowerCase());
+        return configMap.get(key.getLabel());
     }
 }

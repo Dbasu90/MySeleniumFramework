@@ -4,6 +4,7 @@ import com.deb.constants.FrameworkConstants;
 import com.deb.enums.ConfigProperties;
 import com.deb.factories.ConfigFactory;
 import com.deb.factories.DriverFactory;
+import com.deb.utils.JsonReaderUtil;
 import com.deb.utils.PropertyReaderUtil;
 import org.openqa.selenium.WebDriver;
 
@@ -18,7 +19,7 @@ public final class Driver {
     //implemented traditional Property reading using Properties class as well as using Owner library to avoid data conversion from String
 
     public static void initDriver() {
-        String browser = ConfigFactory.getConfig().browser();
+        String browser = JsonReaderUtil.getValue(ConfigProperties.BROWSER);
         String runMode = PropertyReaderUtil.getValue(ConfigProperties.RUNMODE);
         if (Objects.isNull(DriverManager.getDriver())) {
             WebDriver driver = DriverFactory.getDriver(browser, runMode);

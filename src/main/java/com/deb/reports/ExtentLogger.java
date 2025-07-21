@@ -10,23 +10,31 @@ public final class ExtentLogger {
     }
 
     public static void pass(String message) {
-        if (ConfigFactory.getConfig().passedstepsscreenshots().equalsIgnoreCase("yes")) {
-            ExtentManager.getThreadTest().pass(message,
+        if (ConfigFactory.getConfig().passedStepsScreenshots().equalsIgnoreCase("yes")) {
+            ExtentManager.getExTest().pass(message,
                     MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtil.captureScreenshot()).build());
         } else {
-            ExtentManager.getThreadTest().pass(message);
+            ExtentManager.getExTest().pass(message);
 
         }
 
     }
 
     public static void fail(String message) {
-        ExtentManager.getThreadTest().fail(message,
-                MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtil.captureScreenshot()).build());
+        if (ConfigFactory.getConfig().failedStepsScreenshots().equalsIgnoreCase("yes")) {
+            ExtentManager.getExTest().fail(message,
+                    MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtil.captureScreenshot()).build());
+        } else {
+            ExtentManager.getExTest().fail(message);
+        }
+    }
+
+    public static void skip(String message) {
+        ExtentManager.getExTest().skip(message);
     }
 
     public static void info(String message) {
-        ExtentManager.getThreadTest().info(message);
+        ExtentManager.getExTest().info(message);
     }
 
 }

@@ -1,4 +1,4 @@
 {
-  "url": "https://opensource-demo.orangehrmlive.com/index.php/auth/login",
-  "browser": "edge"
+  "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+  "browser": "chrome"
 }

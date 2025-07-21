@@ -1,4 +1,4 @@
-package com.deb.pages.pageComponents;
+package com.deb.pages.pagecomponents;
 
 import com.deb.driver.DriverManager;
 import org.openqa.selenium.By;

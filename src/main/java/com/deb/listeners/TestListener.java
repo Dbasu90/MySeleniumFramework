@@ -3,13 +3,24 @@ package com.deb.listeners;
 import com.deb.annotations.FrameworkAnnotation;
 import com.deb.reports.ExtentLogger;
 import com.deb.reports.ExtentReport;
+import org.testng.ISuite;
+import org.testng.ISuiteListener;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import java.util.Arrays;
 
-public class TestListener implements ITestListener {
+public class TestListener implements ITestListener, ISuiteListener {
+
+    public void onStart(ISuite suite) {
+        ExtentReport.initReport();
+    }
+
+    public void onFinish(ISuite suite) {
+        ExtentReport.flushReport();
+    }
+
     public void onTestStart(ITestResult result) {
         ExtentReport.createTest(result.getMethod().getDescription());
         ExtentReport.assignAuthor(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotation.class).author());
@@ -27,10 +38,12 @@ public class TestListener implements ITestListener {
     }
 
     public void onStart(ITestContext context) {
-        ExtentReport.initReport();
+
     }
 
     public void onFinish(ITestContext context) {
-        ExtentReport.flushReport();
+
     }
+
+
 }

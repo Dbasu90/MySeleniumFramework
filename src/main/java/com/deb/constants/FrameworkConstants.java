@@ -1,5 +1,8 @@
 package com.deb.constants;
 
+import com.deb.enums.ConfigProperties;
+import com.deb.utils.PropertyReaderUtil;
+
 public final class FrameworkConstants {
 
     private FrameworkConstants() {
@@ -9,7 +12,7 @@ public final class FrameworkConstants {
 
     private static final String RESOURCE_PATH = System.getProperty("user.dir") + "/src/test/resources";
 
-    private static final String REPORT_PATH = System.getProperty("user.dir") + "/target/reports/report.html";
+    private static final String REPORT_PATH = System.getProperty("user.dir") + "/target/reports/";
 
     private static final String TESTDATA_PATH = RESOURCE_PATH + "/testdata.xlsx";
 
@@ -19,12 +22,28 @@ public final class FrameworkConstants {
 
     private static final String CONFIG_JSON_PATH = RESOURCE_PATH + "/config/config.json";
 
+    private static String extentReportFilePath = "";
+
+    private static final String REPORT_NAME = "report.html";
+
     public static long getTimeout() {
         return TIMEOUT;
     }
 
-    public static String getReportPath() {
-        return REPORT_PATH;
+    public static String getExtentReportFilePath() {
+        if (extentReportFilePath.isEmpty()) {
+            extentReportFilePath = createReportFilePath();
+        }
+        return extentReportFilePath;
+    }
+
+    private static String createReportFilePath() {
+        if (PropertyReaderUtil.getValue(ConfigProperties.OVERRIDEREPORTS).equalsIgnoreCase("no")) {
+            return REPORT_PATH + System.currentTimeMillis() + "/" + REPORT_NAME;
+        } else {
+            return REPORT_PATH + REPORT_NAME;
+        }
+
     }
 
     public static String getTestDataPath() {

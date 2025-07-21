@@ -2,18 +2,26 @@ package com.deb.reports;
 
 import com.aventstack.extentreports.ExtentTest;
 
+import java.util.Objects;
+
 public final class ExtentManager {
 
     private ExtentManager() {
     }
 
-    private static final ThreadLocal<ExtentTest> threadTest = new ThreadLocal<>();
+    private static final ThreadLocal<ExtentTest> exTest = new ThreadLocal<>();
 
-    static ExtentTest getThreadTest() {
-        return threadTest.get();
+    static ExtentTest getExTest() {
+        return exTest.get();
     }
 
-    static void setThreadTest(ExtentTest test) {
-        threadTest.set(test);
+    static void setExTest(ExtentTest test) {
+        if (Objects.nonNull(test)) {
+            exTest.set(test);
+        }
+    }
+
+    static void unload() {
+        exTest.remove();
     }
 }
