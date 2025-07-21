@@ -7,7 +7,8 @@ public enum ConfigProperties {
     REMOTEURL("remoteUrl"),
     PASSEDSTEPSSCREENSHOTS("passedStepsScreenshots"),
     FAILEDSTEPSSCREENSHOTS("failedStepsScreenshots"),
-    OVERRIDEREPORTS("overrideReports");
+    OVERRIDEREPORTS("overrideReports"),
+    RETRYFAILEDTESTS("retryFailedTests");
 
     private final String label;
 

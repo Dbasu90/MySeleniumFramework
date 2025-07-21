@@ -18,4 +18,6 @@ public interface FrameworkConfig extends Config {
     String failedStepsScreenshots();
 
     String overrideReports();
+
+    String retryFailedTests();
 }

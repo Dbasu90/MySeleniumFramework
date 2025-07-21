@@ -3,6 +3,8 @@
 <suite name="All Test Suite">
     <listeners>
         <listener class-name="com.deb.listeners.TestListener"/>
+        <listener class-name="com.deb.listeners.MethodInterceptor"/>
+        <listener class-name="com.deb.listeners.AnnotationTransformer"/>
     </listeners>
     <test parallel="methods" thread-count="2" name="D:/Practice Frameworks/MySeleniumFramework">
         <classes>

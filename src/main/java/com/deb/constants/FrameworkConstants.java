@@ -16,7 +16,7 @@ public final class FrameworkConstants {
 
     private static final String TESTDATA_PATH = RESOURCE_PATH + "/testdata.xlsx";
 
-    private static final String DATASHEET_NAME = "runData";
+    private static final String DATASHEET_NAME = "TESTDATA";
 
     private static final String PROPERTIES_PATH = RESOURCE_PATH + "/config/config.properties";
 
@@ -25,6 +25,8 @@ public final class FrameworkConstants {
     private static String extentReportFilePath = "";
 
     private static final String REPORT_NAME = "report.html";
+
+    private static final String EXECUTION_SHEET = "RUNMANAGER";
 
     public static long getTimeout() {
         return TIMEOUT;
@@ -61,4 +63,9 @@ public final class FrameworkConstants {
     public static String getConfigJsonPath() {
         return CONFIG_JSON_PATH;
     }
+
+    public static String getExecutionSheet() {
+        return EXECUTION_SHEET;
+    }
+
 }
