@@ -4,7 +4,7 @@ import com.deb.enums.WaitStrategy;
 import com.deb.utils.SeleniumUtil;
 import org.openqa.selenium.By;
 
-public class LoginPage {
+public final class LoginPage {
 
     private static final By TXTBOX_USERNAME = By.xpath("//input[@name='username']");
 

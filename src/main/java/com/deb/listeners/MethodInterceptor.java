@@ -23,7 +23,6 @@ public class MethodInterceptor implements IMethodInterceptor {
                 if (list.get(i).getMethod().getMethodName().equals(executionData.get(j).get("testcasename")) &&
                         executionData.get(j).get("execute").equalsIgnoreCase("yes")) {
                     list.get(i).getMethod().setDescription(executionData.get(j).get("description"));
-                    list.get(i).getMethod().setPriority(Integer.parseInt(executionData.get(j).get("priority")));
                     list.get(i).getMethod().setInvocationCount(Integer.parseInt(executionData.get(j).get("count")));
                     result.add(list.get(i));
                 }

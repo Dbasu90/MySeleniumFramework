@@ -6,7 +6,7 @@ import com.deb.pages.pagecomponents.SideBarMenuComponent;
 import com.deb.utils.SeleniumUtil;
 import org.openqa.selenium.By;
 
-public class HomePage {
+public final class HomePage {
 
     private static final By DIV_DASHBOARD = By.xpath("(//div[@class='oxd-topbar-header-title']//h6)[1]");
 
