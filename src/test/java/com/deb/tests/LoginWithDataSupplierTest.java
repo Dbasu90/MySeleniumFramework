@@ -9,7 +9,10 @@ import org.testng.annotations.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class LoginWithDataSupplierTest extends BaseTest {
+public final class LoginWithDataSupplierTest extends BaseTest {
+
+    private LoginWithDataSupplierTest() {
+    }
 
 
     @FrameworkAnnotation(author = "Debasmita", category = {"Smoke", "Regression"})

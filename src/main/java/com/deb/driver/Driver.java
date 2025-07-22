@@ -18,8 +18,11 @@ public final class Driver {
 
     //implemented traditional Property reading using Properties class as well as using Owner library to avoid data conversion from String
 
-    public static void initDriver() {
-        String browser = JsonReaderUtil.getValue(ConfigProperties.BROWSER);
+    public static void initDriver(String browserName) {
+        String browser = browserName;
+        if (Objects.isNull(browser) || browser.isBlank()) {
+            browser = JsonReaderUtil.getValue(ConfigProperties.BROWSER);
+        }
         String runMode = PropertyReaderUtil.getValue(ConfigProperties.RUNMODE);
         if (Objects.isNull(DriverManager.getDriver())) {
             WebDriver driver = DriverFactory.getDriver(browser, runMode);

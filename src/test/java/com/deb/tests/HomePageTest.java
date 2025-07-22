@@ -9,7 +9,10 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class HomePageTest extends BaseTest {
+public final class HomePageTest extends BaseTest {
+
+    private HomePageTest() {
+    }
 
     private static final String EXPECTED_TITLE = "Dashboard";
 

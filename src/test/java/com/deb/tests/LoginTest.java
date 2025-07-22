@@ -9,8 +9,10 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class LoginTest extends BaseTest {
+public final class LoginTest extends BaseTest {
 
+    private LoginTest() {
+    }
 
     @FrameworkAnnotation(author = "Debasmita", category = {"Smoke", "Regression"})
     @Test
